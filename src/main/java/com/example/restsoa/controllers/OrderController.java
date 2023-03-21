@@ -16,17 +16,17 @@ import java.time.LocalDateTime;
 public class OrderController {
 
     @PostMapping
-    public ResponseEntity<?> placeOrder(@RequestBody Order order){
+    public ResponseEntity<?> placeOrder(@RequestBody Order order) {
 
         order.setAmount(new BigDecimal(200));
         order.setOrderReceivedTime(LocalDateTime.now());
 
-        return ResponseEntity.ok(new ApiResponse(200,order));
+        return ResponseEntity.ok(new ApiResponse(200, order));
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOrder(@PathVariable Long id){
+    public ResponseEntity<?> getOrder(@PathVariable Long id) {
 
         Order order = new Order();
         order.setOrderReceivedTime(LocalDateTime.now().minusMinutes(5));
@@ -35,9 +35,10 @@ public class OrderController {
         order.setMilk("Skim");
         order.setAmount(new BigDecimal(200));
         order.setSize("small");
-        order.setSize();
+        order.setTimeToWait("2 Minutes");
+        order.setProductName("Latte");
 
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(new ApiResponse(200, order));
 
     }
 }
